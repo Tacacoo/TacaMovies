@@ -37,13 +37,13 @@
         }
 
         function evt_InitSearch() {  //obtener datos de peliculas pra mostras al iniciar la pagina
-
-            var vowels = Array("Avengers", "Toy", "Spider", "Iron", "u");
-            var vowel = "Rambo";
-            var vowela = "Avengers";
-            var year = 2008;
-            var url = "http://www.omdbapi.com/?apikey=3ec23e8f&s=" + vowel + "&y=" + year;// Estrenos
-            var url2 = "http://www.omdbapi.com/?apikey=3ec23e8f&s=" + vowela + "&type=series";// Series
+            var number = Math.floor((Math.random() * 17) + 1);
+            var titles = Array("Avengers", "Toys", "Spider", "Iron", "Medal","Soldier","War","Captain","Terminator","Rambo","Rock","Fast","Lord","Find","Cero","One","Red","Black");
+            var series = Array("The Walking Dead", "Vikings", "Game of Thrones", "Doctor", "Grey's","Lucifer","the simpsons","Breaking Bad","spongebob","Stranger Things","Sherlock","Daredevil","Veep","Blacklist","La rosa de Guadalupe","Black Mirror","House of Cards","The big bang theory");
+            var vowel = titles[number];
+            var vowel2 = series[number];
+            var url = "http://www.omdbapi.com/?apikey=3ec23e8f&s=" + vowel; // Contenido
+            var url2 = "http://www.omdbapi.com/?apikey=3ec23e8f&s=" + vowel2 + "&type=series"; // Series
             $.ajax({
                 url: url,
                 success: cardMoviesNew
