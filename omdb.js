@@ -6,6 +6,7 @@
         var btnsearch = $('#btnSearch');//btnBuscar
         var cards = $('#imgList');//parrafo 1
         var cards2 = $('#imgList2');//parrafo 2
+        var arrayCards = Array()
         btnsearch.click(evt_search);
         evt_InitSearch();
         clearAll();
@@ -36,10 +37,10 @@
         }
 
         function evt_InitSearch() {  //obtener datos de peliculas pra mostras al iniciar la pagina
-            var number = Math.floor(Math.random() * 4) + 1;
-            var vowels = Array("a", "e", "i", "o", "u");
+
+            var vowels = Array("Avengers", "Toy", "Spider", "Iron", "u");
             var vowel = "Rambo";
-            var vowela = "Game of Thrones";
+            var vowela = "Avengers";
             var year = 2008;
             var url = "http://www.omdbapi.com/?apikey=3ec23e8f&s=" + vowel + "&y=" + year;// Estrenos
             var url2 = "http://www.omdbapi.com/?apikey=3ec23e8f&s=" + vowela + "&type=series";// Series
@@ -59,14 +60,18 @@
             for (var m in response.Search) { //recorrer el objeto retornado
                 var movie = response.Search[m];
                 var img = $('<img src="' + movie.Poster + '" class="image-grid">');
-                cards.append(img);
+                var a = $('<a href="#"></a>');
+                a.append(img);
+                cards.append(a);
             }
         }
         function cardMoviesSeries(response) {           
             for (var m in response.Search) { //recorrer el objeto retornado
                 var movie = response.Search[m];
                 var img = $('<img src="' + movie.Poster + '" class="image-grid">');
-                cards2.append(img);
+                var a = $('<a href="#"></a>');
+                a.append(img);
+                cards2.append(a);
             }
         }
 
