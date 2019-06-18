@@ -1,0 +1,34 @@
+.search-aside{
+    border: 1px solid black;
+}
+#movieList{
+    list-style: none;
+}
+
+body {
+   margin: 0;
+}
+
+h1 {
+   margin: 0;
+   color:#bbb;
+   font-size:1.85em;
+}
+
+.image:hover {
+   -webkit-transform: scale(1.35);
+   transform: scale(1.35);
+   opacity: .9;
+}
+
+.image{
+   -webkit-transition: all 0.7s ease;
+   transition: all 0.7s ease;
+   padding: 15px;
+   margin:auto;
+}
+
+p{
+    margin:0;
+}
+
