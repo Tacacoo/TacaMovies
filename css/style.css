@@ -27,7 +27,6 @@ h1 {
    padding: 15px;
    margin:auto;
 }
-
 p{
     margin:0;
 }
@@ -36,5 +35,9 @@ p{
     margin: 1rem;
     border: 1px solid grey;
 }
-
-
+.divModal{
+    display: none;
+    z-index: 6;
+    background-color: orangered;
+    margin: 40px;
+}

@@ -9,6 +9,7 @@
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.0/jquery.min.js"></script>
     <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="jquery/jquery.modal.css">
     <link rel="stylesheet" href="css/style.css">
 </head>
 
@@ -31,6 +32,7 @@
 
             </div>
             <div class="col-xs-9 colgrid">
+
                 <div class="search-aside">
                     <h2>Estrenos</h2>
                 </div>
@@ -44,9 +46,19 @@
                     <!--Aqui se van a crear las iamgenes con jQuery obteniendo la info de la API-->
                 </div>
             </div>
-        </div>
 
+            <h2>Modal Example</h2>
+
+            <!-- Trigger/Open The Modal -->
+            <button id="btnModal">Open Modal</button>
+
+            <div class="divModal" id="modal">
+                    <h2>Codigo Example</h2>
+            </div>
+        </div>
     </div>
+    <script src="jquery/jquery.modal.min.js"></script>
     <script src="omdb.js"></script>
 </body>
+
 </html>
