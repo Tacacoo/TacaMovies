@@ -38,7 +38,7 @@
 
                     var a = $('<a href="#"></a>');
                     var li = $('<li class="list-group-item"></li>');
-                    var img = $('<img src="https://www.cocin-cartagena.es/wp-content/uploads/2018/12/ImagenNoDisponible.png" width="50px"></img>');
+                    var img = $('<img src="https://lecicmaderas.com/wp-content/uploads/2017/05/imagen-no-disponible.jpg" width="50px"></img>');
                     a.append(img);
                     a.append(movie.Title);
                     li.append(a);
@@ -50,9 +50,9 @@
         }
 
         function evt_InitSearch() {  //obtener datos de peliculas pra mostras al iniciar la pagina
-            var number = Math.floor((Math.random() * 17) + 1);
-            var titles = Array("Avengers", "Toys", "Spider", "Iron", "Medal","Soldier","War","Captain","Terminator","Rambo","Rock","Fast","Lord","Find","Cero","One","Red","Black");
-            var series = Array("The Walking Dead", "Vikings", "Game of Thrones", "Doctor", "Grey's","Lucifer","the simpsons","Breaking Bad","spongebob","Stranger Things","Sherlock","Daredevil","Veep","Blacklist","La rosa de Guadalupe","Black Mirror","House of Cards","The big bang theory");
+            var number = Math.floor((Math.random() * 16) + 1);
+            var titles = Array("Avengers", "Toys", "Spider", "Iron", "Medal","Soldier","War","Captain","Terminator","Rock","Fast","Lord","Find","Cero","One","Red","Black");
+            var series = Array("The Walking Dead", "Vikings", "Game of Thrones", "Doctor", "Grey's","Lucifer","the simpsons","Breaking Bad","Stranger Things","Sherlock","Daredevil","Veep","Blacklist","La rosa de Guadalupe","Black Mirror","House of Cards","The big bang theory");
             var vowel = titles[number];
             var vowel2 = series[number];
             var url = "http://www.omdbapi.com/?apikey=3ec23e8f&s=" + vowel; // Contenido
@@ -79,7 +79,7 @@
                 cards.append(a);
                 }
                 else{               
-                var img = $('<img src="https://www.cocin-cartagena.es/wp-content/uploads/2018/12/ImagenNoDisponible.png" class="image-grid">');
+                var img = $('<img src="https://lecicmaderas.com/wp-content/uploads/2017/05/imagen-no-disponible.jpg" class="image-grid">');
                 var a = $('<a href="#"></a>');
                 a.append(img);
                 cards.append(a);
@@ -87,17 +87,17 @@
             }
         }
         
-        function cardMoviesSeries(response) {           
+        function cardMoviesSeries(response) {     // validamos la api retorna el url sino no para agregarle una de que la imagen no se encientra disponible.      
             for (var m in response.Search) { //recorrer el objeto retornado
-                var movie = response.Search[m];
+                var movie = response.Search[m]; //obtenemos el objeto
                 if(movie.Poster!=="N/A"){
-                var img = $('<img src="' + movie.Poster + '" class="image-grid">');
+                var img = $('<img src="' + movie.Poster + '" class="image-grid">'); //creamos con jquery elementos para agregarlos cn append
                 var a = $('<a href="#"></a>');
                 a.append(img);
                 cards2.append(a);
                 }
                 else{
-                var img = $('<img src="https://www.cocin-cartagena.es/wp-content/uploads/2018/12/ImagenNoDisponible.png" class="image-grid">');
+                var img = $('<img src="https://lecicmaderas.com/wp-content/uploads/2017/05/imagen-no-disponible.jpg" class="image-grid2">');
                 var a = $('<a href="#"></a>');
                 a.append(img);
                 cards2.append(a);
@@ -111,4 +111,4 @@
     }
 })();
 
-/*http://www.omdbapi.com/?t=Game of Thrones&Season=1*/
+

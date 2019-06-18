@@ -1,5 +1,5 @@
 .search-aside{
-    border: 1px solid black;
+    border: 1px solid grey;
 }
 #movieList{
     list-style: none;
@@ -31,8 +31,10 @@ h1 {
 p{
     margin:0;
 }
-.image-grid{
+.image-grid,.image-grid2{
     width: 200px;
     margin: 1rem;
+    border: 1px solid grey;
 }
+
 
