@@ -19,7 +19,7 @@
         <h1>TacaMovies</h1>
         <div class="row">
             <div class="col-xs-3">
-                <div class="search-aside">
+                <div id="search-aside" class="search-aside">
                     <h2>Buscar</h2>
                     <span class="span-search">Busqueda por titulo y </span><br>
                     <input type="text" id="title" placeholder="Ej. Fast and Furious">
@@ -33,13 +33,13 @@
             </div>
             <div class="col-xs-9 colgrid">
 
-                <div class="search-aside">
+                <div id="search-asid" class="search-aside">
                     <h2>Estrenos</h2>
                 </div>
                 <div id="imgList">
                     <!--Aqui se van a crear las iamgenes con jQuery obteniendo la info de la API-->
                 </div>
-                <div class="search-aside">
+                <div id="search-asid" class="search-aside">
                     <h2>Series</h2>
                 </div>
                 <div id="imgList2">
@@ -47,13 +47,14 @@
                 </div>
             </div>
 
-            <h2>Modal Example</h2>
+            <h2>Contacto</h2>
 
-            <!-- Trigger/Open The Modal -->
-            <button id="btnModal">Open Modal</button>
+            <!-- Este es el modal que va a presentar la informacion de la pagina -->
+            
 
             <div class="divModal" id="modal">
-                    <h2>Codigo Example</h2>
+                    <h2>Aqui va la la info de la pagina</h2>
+                    <!--Aqui se va a agregar el contenido del elemento seleccionado introduccido mediante jquery-->
             </div>
         </div>
     </div>
