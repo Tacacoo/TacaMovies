@@ -70,13 +70,13 @@
             for (var m in response.Search) { //recorrer el objeto retornado
                 var movie = response.Search[m];
                 if (movie.Poster !== "N/A") {
-                    var img = $('<input type="image" src="' + movie.Poster + '" class="image-grid" placeholder="' + movie.imdbID + '">');
+                    var img = $('<input id="placelist" type="image" src="' + movie.Poster + '" class="image-grid" placeholder="' + movie.imdbID + '">');
                     var a = $('<a href="#"></a>');
                     a.append(img);
                     cards.append(a);
                 }
                 else {
-                    var img = $('<input type="image" src="https://lecicmaderas.com/wp-content/uploads/2017/05/imagen-no-disponible.jpg" class="image-grid" placeholder="' + movie.imdbID + '">');
+                    var img = $('<input id="placelist" type="image" src="https://lecicmaderas.com/wp-content/uploads/2017/05/imagen-no-disponible.jpg" class="image-grid" placeholder="' + movie.imdbID + '">');
                     var a = $('<a href="#"></a>');
                     a.append(img);
                     cards.append(a);
@@ -88,13 +88,13 @@
             for (var m in response.Search) { //recorrer el objeto retornado
                 var movie = response.Search[m]; //obtenemos el objeto
                 if (movie.Poster !== "N/A") {
-                    var img = $('<input type="image"  src="' + movie.Poster + '" class="image-grid" placeholder="' + movie.imdbID + '">'); //creamos con jquery elementos para agregarlos cn append
+                    var img = $('<input id="placelist2" type="image"  src="' + movie.Poster + '" class="image-grid" placeholder="' + movie.imdbID + '">'); //creamos con jquery elementos para agregarlos cn append
                     var a = $('<a href="#"></a>');
                     a.append(img);
                     cards2.append(a);
                 }
                 else {
-                    var img = $('<input type="image" src="https://lecicmaderas.com/wp-content/uploads/2017/05/imagen-no-disponible.jpg" class="image-grid2" placeholder="' + movie.imdbID + '">');
+                    var img = $('<input id="placelist2" type="image" src="https://lecicmaderas.com/wp-content/uploads/2017/05/imagen-no-disponible.jpg" class="image-grid2" placeholder="' + movie.imdbID + '">');
                     var a = $('<a href="#"></a>');
                     a.append(img);
                     cards2.append(a);
@@ -114,6 +114,22 @@
 
         });
 
+        $('#imgList').click(function () {
+            var imdb = $('#placelist').attr('placeholder');
+            loadModal(imdb);
+            $('#modal').modal();
+
+
+        });
+
+        $('#imgList2').click(function () {
+            var imdb = $('#placelist2').attr('placeholder');
+            loadModal(imdb);
+            $('#modal').modal();
+
+
+        });
+
 
         function loadModal(imdb) { //obtener datos
             var url = "http://www.omdbapi.com/?apikey=3ec23e8f&i=" + imdb;
@@ -124,8 +140,8 @@
         }
 
         function loadModalCard(respons) {//mostrar datos
-            var divModal = $('#pag-modal');
-            alert(""+respons.Title);
+            var divModal = $('.divModal');
+            alert("Titulo: "+respons.Title+"\n Genero: "+respons.Genre+"\n Resumen: "+respons.Plot);
             for (var n in response.Search) {
                 var movie = respons.Search[n];
                 var h2 = $('<h2>' + movie.Title + '</h2>');
