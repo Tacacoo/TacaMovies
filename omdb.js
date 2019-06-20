@@ -124,6 +124,7 @@
 
         function loadModal(imdb) { //obtener datos
             var url = "http://www.omdbapi.com/?apikey=3ec23e8f&s=" + imdb;
+            alert(""+imdb);
             $.ajax({
                 url: url,
                 success: loadModalCard //enviar datos para ser mostrados
