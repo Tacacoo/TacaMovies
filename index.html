@@ -7,6 +7,7 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Document</title>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
+    <script src="jquery/jquery-3.4.1.min.js"></script>
     <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet">
     <link rel="stylesheet" href="jquery/jquery.modal.css">
     <link rel="stylesheet" href="css/style.css">
@@ -53,13 +54,18 @@
 
             <div class="divModal" id="modal">
                 <div id="movie-info">
+                    <input id="img-modal" type="image" width="200px">
                     <h2>Titulo: <span id="modal-title">1</span></h2>
-                    <input id="img-modal" type="image" src="" width="50px">
+                    <h4>Año de produccion: <span id="modal-year">2</span></h4>
+                    <h4>Rate: <span id="modal-rated">2</span></h4>
                     <h4>Generos: <span id="modal-gender">2</span></h4>
+                    <h4>Lanzamiento: <span id="modal-released">2</span></h4>
                     <h4>Director: <span id="modal-dir">3</span></h4>
                     <h4>Actores: <span id="modal-act">4</span></h4>
                     <h5>Resumen: <span id="modal-plot">5</span></h5>
                     <h5>Lenguajes: <span id="modal-lang">6</span></h5>
+                    <h5>Premios: <span id="modal-awards">6</span></h5>
+                    <h5>Duracion: <span id="modal-time">6</span></h5>
                 </div>
 
             </div>
@@ -70,7 +76,6 @@
     </div>
     </div>
     <script src="jquery/jquery.modal.min.js"></script>
-    <script src="jquery/jquery-3.4.1.min.js"></script>
     <script src="omdb.js"></script>
 
 </body>

@@ -46,7 +46,7 @@ border-radius: 15px;
 .divModal{
     display: none;
     width: 95%;
-    height: 80%;
+    height: auto;
     background-color: orangered;
 }
 .container-modal{
@@ -56,4 +56,7 @@ border-radius: 15px;
 .close-modal{
 margin-right: 1.6rem;
 margin-top: 1.6rem;
+}
+#img-modal{
+margin-left: 25%;
 }

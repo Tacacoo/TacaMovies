@@ -36,12 +36,13 @@ $(document).ready(function() {
             $('#movieList').on('click','.placehold',function(event){
                 let tag = $(event.currentTarget);
                 loadModal(tag.data().name);
+                $('#modal').modal(); 
             });
           });
 
         function movieHtml(movie){
             let element = `
-            <li class="placehold" data-name="${movie.imdbID}">
+            <li class="placehold" data-name="${movie.Title}">
                     <img src="${movie.Poster}" width="50px" onerror="this.onerror=null;this.src='https://lecicmaderas.com/wp-content/uploads/2017/05/imagen-no-disponible.jpg';">
                     <p>${movie.Title}</p>
                 </li>
@@ -70,25 +71,21 @@ $(document).ready(function() {
         }
 
         function cardMoviesNew(response) {
-            var i = 0;
             for (var m in response.Search) { //recorrer el objeto retornado
                 var movie = response.Search[m];
                 if (movie.Poster !== "N/A") {
-                    var img = $('<input id="placelist'+i+'" type="image" src="' + movie.Poster + '" class="image-grid" placeholder="' + movie.Title + '">');
+                    var img = $('<input id="placelist" type="image" src="' + movie.Poster + '" class="image-grid" placeholder="' + movie.Title + '">');
                     cards.append(img);
                 }
                 else {
-                    var img = $('<input id="placelist'+i+'" type="image" src="https://lecicmaderas.com/wp-content/uploads/2017/05/imagen-no-disponible.jpg" class="image-grid" placeholder="' + movie.imdbID + '">');
+                    var img = $('<input id="placelist" type="image" src="https://lecicmaderas.com/wp-content/uploads/2017/05/imagen-no-disponible.jpg" class="image-grid" placeholder="' + movie.imdbID + '">');
                     cards.append(img);
                 }
-                
-                i++;
             }
 
         }
 
         function cardMoviesSeries(response) {     // validamos la api retorna el url sino no para agregarle una de que la imagen no se encientra disponible.      
-            var i = 0;
             for (var m in response.Search) { //recorrer el objeto retornado
                 var movie = response.Search[m]; //obtenemos el objeto
                 if (movie.Poster !== "N/A") {
@@ -98,7 +95,7 @@ $(document).ready(function() {
                     cards2.append(a);
                 }
                 else {
-                    var img = $('<input id="placelist2'+i+'" type="image" src="https://lecicmaderas.com/wp-content/uploads/2017/05/imagen-no-disponible.jpg" class="image-grid2" placeholder="' + movie.imdbID + '">');
+                    var img = $('<input id="placelist2" type="image" src="https://lecicmaderas.com/wp-content/uploads/2017/05/imagen-no-disponible.jpg" class="image-grid2" placeholder="' + movie.imdbID + '">');
                     var a = $('<a href="#"></a>');
                     a.append(img);
                     cards2.append(a);
@@ -112,24 +109,47 @@ $(document).ready(function() {
         }
 
         function loadModal(imdb) { //obtener datos
-            var url = "http://www.omdbapi.com/?apikey=3ec23e8f&i=" + imdb;
-            $.ajax({
-                url: url,
-                success: loadModalCard //enviar datos para ser mostrados
-            });
+            var apiKey = '3ec23e8f';
+            let request = $.ajax({
+                url: "http://www.omdbapi.com",
+                method: "GET",
+                data: { 
+                    apikey : apiKey,
+                    t : imdb
+                },
+                dataType: "json"
+              });
+               
+              request.done(function( json ) {// se va ejecutar una vez ya que el ajax se resuelva 
+    
+                if (json.Response == 'True'){
+                    loadModalCard(json);
+                }
+                else{
+    
+                }
+              });
+               
+              request.fail(function( jqXHR, textStatus ) {
+                alert( "Request failed: " + textStatus );
+              });
         }
 
-        function loadModalCard(response) {//mostrar datos en el modal
-            for (var m in response.Search) { //recorrer el objeto retornado
-                var movie = response.Search[m];
-            $('#modal-title').html(""+movie.Title);
-            $('#img-modal').attr("scr",movie.Poster);
-            $('#modal-gender').html(""+movie.Title);
-            $('#modal-dir').html(""+movie.Directors);
-            $('#modal-act').html(""+movie.Actors);
-            $('#modal-plot').html(""+movie.Plot);
-            $('#modal-lang').html(""+movie.Lang);
-        }
+        function loadModalCard(json) {//mostrar datos en el modal
+            $('#img-modal').attr('src',json.Poster);
+            $('#modal-title').html(json.Title);
+            $('#modal-year').html(json.Year);
+            $('#modal-rated').html(json.Rated);
+            $('#modal-gender').html(json.Genre);
+            $('#modal-released').html(json.Released);
+            $('#modal-dir').html(json.Director);
+            $('#modal-act').html(json.Actors);
+            $('#modal-plot').html(json.Plot);
+            $('#modal-lang').html(json.Language);
+            $('#modal-awards').html(json.Awards);
+            $('#modal-time').html(json.Runtime);
+
+        
     }
         var banner = $('.moviegrid');
         var img = $('<input type="image" class="banner-img" id="banner" src="src/Movies.png">');
