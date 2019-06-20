@@ -26,38 +26,44 @@
                     <button id="btnSearch" class="btn btn-primary btn-block">Buscar</button>
                 </div>
                 <h2>Resultados</h2>
-                <ul class="list-group">
-                    <li id="movieList" class="list-group-item"></li>
+                <ul id="movieList" class="list-group">
                     <!--Aqui se van a cargar las peliculas que se consultan por titulo-->
                 </ul>
 
             </div>
             <div class="col-xs-9 ">
                 <div class="moviegrid"></div>
-                    <div id="search-asid" class="search-aside">
-                        <h2 style="margin-top: 20px;">Estrenos</h2>
-                    </div>
-                    <div id="imgList">
-                        <!--Aqui se van a crear las iamgenes con jQuery obteniendo la info de la API-->
-                    </div>
-                    <div id="search-asid" class="search-aside">
-                        <h2>Series</h2>
-                    </div>
-                    <div id="imgList2">
-                        <!--Aqui se van a crear las iamgenes con jQuery obteniendo la info de la API-->
-                    </div>
+                <div id="search-asid" class="search-aside">
+                    <h2 style="margin-top: 20px;">Estrenos</h2>
                 </div>
-            
+                <div id="imgList">
+                    <!--Aqui se van a crear las iamgenes con jQuery obteniendo la info de la API-->
+                </div>
+                <div id="search-asid" class="search-aside">
+                    <h2>Series</h2>
+                </div>
+                <div id="imgList2">
+                    <!--Aqui se van a crear las iamgenes con jQuery obteniendo la info de la API-->
+                </div>
+            </div>
+
             <h2>Contacto</h2>
 
             <!-- Este es el modal que va a presentar la informacion de la pagina -->
-            <div id="pag-modal" class="container-modal">
 
-                <div class="divModal" id="modal">
-                    <h2>Aqui va la la info de la pagina</h2>
-
+            <div class="divModal" id="modal">
+                <div id="movie-info">
+                    <h2>Titulo: <span id="modal-title">1</span></h2>
+                    <input id="img-modal" type="image" src="" width="50px">
+                    <h4>Generos: <span id="modal-gender">2</span></h4>
+                    <h4>Director: <span id="modal-dir">3</span></h4>
+                    <h4>Actores: <span id="modal-act">4</span></h4>
+                    <h5>Resumen: <span id="modal-plot">5</span></h5>
+                    <h5>Lenguajes: <span id="modal-lang">6</span></h5>
                 </div>
+
             </div>
+
             <!--Aqui se va a agregar el contenido del elemento seleccionado introduccido mediante jquery-->
 
         </div>
