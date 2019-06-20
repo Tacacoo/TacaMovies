@@ -110,24 +110,18 @@
             var imdb = $('#placehold').attr('placeholder');
             loadModal(imdb);
             $('#modal').modal();
-
-
         });
 
         $('#imgList').click(function () {
             var imdb = $('#placelist').attr('placeholder');
             loadModal(imdb);
             $('#modal').modal();
-
-
         });
 
         $('#imgList2').click(function () {
             var imdb = $('#placelist2').attr('placeholder');
             loadModal(imdb);
             $('#modal').modal();
-
-
         });
 
 
@@ -159,9 +153,9 @@
                 div.append(actr);
                 divModal.append(div);
             }
-
         }
+       var banner = $('.moviegrid');
+       var img = $('<input type="image" class="banner-img" id="banner" src="src/Movies.png">');
+       banner.append(img);
     }
 })();
-
-
