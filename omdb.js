@@ -1,7 +1,4 @@
-(function () {
-    $(init);//init
-
-    function init() {
+$(document).ready(function() {
         var titulo = $('#title');//input text
         var btnsearch = $('#btnSearch');//btnBuscar
         var cards = $('#imgList');//parrafo 1
@@ -19,36 +16,38 @@
             });
         }
         function renderMovies(response) {//mostrar datos
-            var i = 0;
             var movieList = $('#movieList');
             movieList.empty();
             for (var n in response.Search) {
                 var movie = response.Search[n];
                 if (movie.Poster !== "N/A") {
-                    var li = $('<li id="placehold'+i+'" class="list-group-item"></li>');
-                    var img = $('<input id="place" type="image" src="' + movie.Poster + '" width="50px" placeholder="' + movie.Title + '">');
-                    li.append(img);
-                    li.append(movie.Title);
-                    movieList.append(li);
+                    movieList.append(movieHtml(movie));
                 }
                 else {
-                    var li = $('<li id="placehold'+i+'" class="list-group-item"></li>');
-                    var img = $('<input id="place" type="image" src="https://lecicmaderas.com/wp-content/uploads/2017/05/imagen-no-disponible.jpg" width="50px" placeholder="' + movie.imdbID + '">');
-                    li.append(img);
-                    li.append(movie.Title);
-                    movieList.append(li);
+                    
+                    movieList.append(movieHtml(movie));
                 }
-                $('#placehold'+i+'').click(function () {
-                    var imdb = $('#place').attr('placeholder');
-                    alert(""+imdb);
-                    loadModal(imdb);
-                    $('#modal').modal();                   
-                });
-                i++;
             }
 
         }
         
+        $(document).ready(function() {
+           
+            $('#movieList').on('click','.placehold',function(event){
+                let tag = $(event.currentTarget);
+                loadModal(tag.data().name);
+            });
+          });
+
+        function movieHtml(movie){
+            let element = `
+            <li class="placehold" data-name="${movie.imdbID}">
+                    <img src="${movie.Poster}" width="50px" onerror="this.onerror=null;this.src='https://lecicmaderas.com/wp-content/uploads/2017/05/imagen-no-disponible.jpg';">
+                    <p>${movie.Title}</p>
+                </li>
+            `;
+            return element
+        } 
 
         function evt_InitSearch() {  //obtener datos de peliculas pra mostras al iniciar la pagina
             var number = Math.floor((Math.random() * 16) + 1);
@@ -82,11 +81,7 @@
                     var img = $('<input id="placelist'+i+'" type="image" src="https://lecicmaderas.com/wp-content/uploads/2017/05/imagen-no-disponible.jpg" class="image-grid" placeholder="' + movie.imdbID + '">');
                     cards.append(img);
                 }
-                $('#placelist'+i+'').click(function () {
-                    var imdb = $('#placelist'+i+'').attr('placeholder');
-                    loadModal(imdb);
-                    $('#modal').modal();
-                });
+                
                 i++;
             }
 
@@ -108,12 +103,6 @@
                     a.append(img);
                     cards2.append(a);
                 }
-                $('#placelist2'+i+'').click(function () {
-                    var imdb = $('#placelist2'+i+'').attr('placeholder');
-                    loadModal(imdb);
-                    $('#modal').modal();
-                });
-                i++;
             }
 
         }
@@ -123,8 +112,7 @@
         }
 
         function loadModal(imdb) { //obtener datos
-            var url = "http://www.omdbapi.com/?apikey=3ec23e8f&s=" + imdb;
-            alert(""+imdb);
+            var url = "http://www.omdbapi.com/?apikey=3ec23e8f&i=" + imdb;
             $.ajax({
                 url: url,
                 success: loadModalCard //enviar datos para ser mostrados
@@ -133,7 +121,7 @@
 
         function loadModalCard(response) {//mostrar datos en el modal
             for (var m in response.Search) { //recorrer el objeto retornado
-                var movie = response.Search[0];
+                var movie = response.Search[m];
             $('#modal-title').html(""+movie.Title);
             $('#img-modal').attr("scr",movie.Poster);
             $('#modal-gender').html(""+movie.Title);
@@ -146,5 +134,4 @@
         var banner = $('.moviegrid');
         var img = $('<input type="image" class="banner-img" id="banner" src="src/Movies.png">');
         banner.append(img);
-    }
-})();
+    });
