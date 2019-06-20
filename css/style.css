@@ -60,3 +60,10 @@ margin-top: 1.6rem;
 #img-modal{
 margin-left: 25%;
 }
+#imgList img{
+    margin: 0.5rem;
+    width: 180px;
+}
+#imgList2 img{
+    width: 180px;
+}
